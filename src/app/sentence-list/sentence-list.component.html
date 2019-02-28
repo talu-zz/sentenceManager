@@ -1,0 +1,7 @@
+<div> 
+  <app-sentence
+    [data]="sentence"
+    (changed)="save($event)"
+    *ngFor="let sentence of savedSentences; trackBy:n"
+  ></app-sentence>
+</div>

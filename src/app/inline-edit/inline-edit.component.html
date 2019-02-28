@@ -1,0 +1,11 @@
+<div (focus)="startEdit()" tabindex="{{tabindex}}">
+  <span [hidden]="isEditMode">{{ value }}</span>
+  <input    
+    #myInput
+    type="text"
+    [hidden]="!isEditMode"
+    [value]="updateValue"
+    (input)="updateValue = $event.target.value"
+    (blur)="stopEdit()"
+  />
+</div>
