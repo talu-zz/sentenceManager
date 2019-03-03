@@ -7,7 +7,7 @@
     type="text"
     [hidden]="!isEditMode"
     [value]="updateValue"
-    (input)="onInput($event)"
+    (input)="onInput($event.target.value)"
     (blur)="stopEdit()"
   />
 </div>

@@ -1,16 +1,13 @@
 <div title="{{ state }}">
-  <app-inline-edit
-    [tabindex]="data.n * 10 + 1"
+  <app-inline-edit    
     [value]="data.s"
     (update)="updateSentence({ s: $event })"
   ></app-inline-edit>
-  <app-inline-edit
-    [tabindex]="data.n * 10 + 2"
+  <app-inline-edit    
     [value]="data.v"
     (update)="updateSentence({ v: $event })"
   ></app-inline-edit>
-  <app-inline-edit
-    [tabindex]="data.n * 10 + 3"
+  <app-inline-edit    
     [value]="data.o"
     (update)="updateSentence({ o: $event })"
   ></app-inline-edit>

@@ -15,7 +15,6 @@ import {
 })
 export class InlineEditComponent implements OnInit {
   @Input() value: string;
-  @Input() tabindex: number;
   @Output() update: EventEmitter<string> = new EventEmitter<string>();
   isEditMode: boolean;
   updateValue: string;
