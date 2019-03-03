@@ -24,7 +24,7 @@ export class InlineEditComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {    
+  ngOnInit() {
     this.isEditMode = false;
     this.updateValue = this.value;
   }
@@ -40,8 +40,8 @@ export class InlineEditComponent implements OnInit {
     this.update.emit(this.updateValue);
   }
 
-  onInput($event) {
-    this.updateValue = $event.target.value;
+  onInput(newValue: string) {
+    this.updateValue = newValue;
     this.width = this.widthRef.nativeElement.offsetWidth + 16;
   }
 }

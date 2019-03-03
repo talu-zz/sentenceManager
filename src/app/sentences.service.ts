@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
+import { sentence } from './sentenceManager.types';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-type sentence = {
+export type sentence = {
   n: number;
   s?: string;
   v?: string;

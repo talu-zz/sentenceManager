@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SentenceListComponent } from './sentence-list.component';
+import { MockSentenceComponent } from '../sentence/sentence.mock';
 
 describe('SentenceListComponent', () => {
   let component: SentenceListComponent;
@@ -8,9 +9,8 @@ describe('SentenceListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SentenceListComponent ]
-    })
-    .compileComponents();
+      declarations: [SentenceListComponent, MockSentenceComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

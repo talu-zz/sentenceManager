@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SentencesService } from '../sentences.service';
+import { sentence } from '../sentenceManager.types';
 
 @Component({
   selector: 'app-sentence-list',
@@ -15,13 +16,15 @@ export class SentenceListComponent implements OnInit {
     this.getSavedSentences();
   }
 
-  private getSavedSentences(){
+  private getSavedSentences() {
     this.sentences
-    .getAll()
-    .subscribe(sentences => (this.savedSentences = sentences));
+      .getAll()
+      .subscribe(sentences => (this.savedSentences = sentences));
   }
 
   save(updatedData: sentence) {
-    this.sentences.update(updatedData).subscribe(() => this.getSavedSentences());
+    this.sentences
+      .update(updatedData)
+      .subscribe(() => this.getSavedSentences());
   }
 }
