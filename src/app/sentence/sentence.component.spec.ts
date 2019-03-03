@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SentenceComponent } from './sentence.component';
-import { MockInlineEditComponent } from '../inline-edit/inline-edit.mock';
 import { sentence } from '../sentenceManager.types';
+import { NgxPopperModule } from 'ngx-popper';
 
 describe('SentenceComponent', () => {
   let component: SentenceComponent;
@@ -10,23 +10,87 @@ describe('SentenceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SentenceComponent, MockInlineEditComponent]
+      declarations: [SentenceComponent],
+      imports: [NgxPopperModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SentenceComponent);
     component = fixture.componentInstance;
-    component.data = <sentence>{
-      n: 1,
-      s: 'Anna',
-      v: 'is eating',
-      o: 'a cookie'
-    };
-    fixture.detectChanges();
   });
 
-  it('should create', () => {    
-    expect(component).toBeTruthy();
+  describe('should create', () => {
+    beforeEach(() => {
+      component.data = <sentence>{
+        n: 1,
+        s: 'Anna',
+        v: 'is eating',
+        o: 'a cookie'
+      };
+      fixture.detectChanges();
+    });
+
+    it('without errors', () => {
+      expect(component).toBeTruthy();
+    });
+
+    it('with correct data', () => {
+      const compiled = fixture.debugElement.nativeElement;
+    
+      expect(compiled.querySelector('div[title] > span:first-child').textContent).toContain('Anna');
+      expect(compiled.querySelector('div[title] > span:nth-child(2)').textContent).toContain('is eating');
+      expect(compiled.querySelector('div[title] > span:nth-child(3)').textContent).toContain('a cookie');
+    });
+  });
+
+  describe('Should compose correct state string for sentence with', () => {
+    it('subject, verb and object', () => {
+      component.data = <sentence>{
+        n: 1,
+        s: 'Anna',
+        v: 'is eating',
+        o: 'a cookie'
+      };
+      fixture.detectChanges();
+
+      expect(component.state).toBe('Subject Verb Object');
+    });
+
+    it('subject and verb', () => {
+      component.data = <sentence>{
+        n: 1,
+        s: 'Anna',
+        v: 'is eating',
+        o: undefined
+      };
+      fixture.detectChanges();
+
+      expect(component.state).toBe('Subject Verb');
+    });
+
+    it('subject and object', () => {
+      component.data = <sentence>{
+        n: 1,
+        s: 'Anna',
+        v: undefined,
+        o: 'a cookie'
+      };
+      fixture.detectChanges();
+
+      expect(component.state).toBe('Subject Object');
+    });
+
+    it('verb', () => {
+      component.data = <sentence>{
+        n: 1,
+        s: '',
+        v: 'is eating',
+        o: undefined
+      };
+      fixture.detectChanges();
+
+      expect(component.state).toBe('Verb');
+    });
   });
 });

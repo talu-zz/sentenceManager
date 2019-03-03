@@ -20,17 +20,14 @@ export class SentenceListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadData();
-    this.routeParams$ = this.route.queryParamMap
-    .subscribe(params => {
-    if(params.has('saved')){
-      this.loadData();
-    }
-
-      
+    this.routeParams$ = this.route.queryParamMap.subscribe(params => {
+      if (params.has('saved')) {
+        this.loadData();
+      }
     });
   }
 
-  loadData(): any {    
+  loadData(): any {
     this.sentences$ = this.sentences.getAll();
   }
 

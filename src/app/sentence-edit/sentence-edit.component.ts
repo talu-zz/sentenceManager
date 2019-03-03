@@ -42,11 +42,6 @@ export class SentenceEditComponent implements OnInit, OnDestroy {
   }
 
   updateSentence() {
-    console.log(
-      'TCL: SentenceEditComponent -> updateSentence -> this.sentenceForm',
-      this.sentenceForm.value
-    );
-
     this.sentences
       .update({
         n: this.id,

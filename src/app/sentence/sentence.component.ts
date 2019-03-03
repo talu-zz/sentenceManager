@@ -8,22 +8,14 @@ import { sentence } from '../sentenceManager.types';
 })
 export class SentenceComponent implements OnInit {
   @Input() data: sentence;
-  @Output() changed: EventEmitter<sentence> = new EventEmitter<sentence>();
-  update: sentence;
   state: string;
 
   constructor() {}
 
   ngOnInit() {
-    this.state =
-      `${(this.data.s && 'Subject') || ''} ` +
-      `${(this.data.v && 'Verb') || ''} ` +
-      `${(this.data.o && 'Object') || ''}`;
-    this.update = { ...this.data };
-  }
-
-  updateSentence(updateData: any) {
-    this.update = { ...this.update, ...updateData };
-    this.changed.emit(this.update);
+    this.state = (
+      `${(this.data.s && 'Subject ') || ''}` +
+      `${(this.data.v && 'Verb ') || ''}` +
+      `${(this.data.o && 'Object') || ''}`).trim();
   }
 }
