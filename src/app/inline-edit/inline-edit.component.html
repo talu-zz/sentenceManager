@@ -1,11 +1,13 @@
-<div (focus)="startEdit()" tabindex="{{tabindex}}">
+<div (focus)="startEdit()" tabindex="{{ tabindex }}">
   <span [hidden]="isEditMode">{{ value }}</span>
-  <input    
+  <span class="hidden" #widthRef>{{ updateValue }}</span>
+  <input
+    [ngStyle]="{ 'width.px': width }"
     #myInput
     type="text"
     [hidden]="!isEditMode"
     [value]="updateValue"
-    (input)="updateValue = $event.target.value"
+    (input)="onInput($event)"
     (blur)="stopEdit()"
   />
 </div>

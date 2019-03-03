@@ -1,4 +1,9 @@
-:host > div {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
+:host {
+    display: block;
+
+    > div {
+        app-inline-edit {
+            margin: 0 0.5rem;
+        }
+    }
 }

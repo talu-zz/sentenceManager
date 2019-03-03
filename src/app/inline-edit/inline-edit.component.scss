@@ -1,3 +1,26 @@
+@import "../../styles.scss";
+
 :host {
-    display: block;
+    display: inline-block;
+    border: 1px solid transparent;
+
+    .hidden {
+        position: absolute;
+        top: -100rem;
+        left: -100rem;
+    }
+
+    &:hover {
+        border: 1px dashed $blue;
+    }
+
+    input {
+        width: 100%;
+        border: none;
+        font: inherit;
+
+        &:focus {
+            outline: none;
+        }
+    }
 }

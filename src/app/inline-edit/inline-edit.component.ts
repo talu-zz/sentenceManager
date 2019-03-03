@@ -20,15 +20,18 @@ export class InlineEditComponent implements OnInit {
   isEditMode: boolean;
   updateValue: string;
   @ViewChild('myInput') myInput: ElementRef;
+  @ViewChild('widthRef') widthRef: ElementRef;
+  width: number;
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {    
     this.isEditMode = false;
     this.updateValue = this.value;
   }
 
   startEdit() {
+    this.width = this.widthRef.nativeElement.offsetWidth + 2;
     this.isEditMode = true;
     setTimeout(() => this.myInput.nativeElement.focus());
   }
@@ -36,5 +39,10 @@ export class InlineEditComponent implements OnInit {
   stopEdit() {
     this.isEditMode = false;
     this.update.emit(this.updateValue);
+  }
+
+  onInput($event) {
+    this.updateValue = $event.target.value;
+    this.width = this.widthRef.nativeElement.offsetWidth + 16;
   }
 }

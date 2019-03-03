@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+$red: rgba(147, 22, 33, 1);
+$lightGrey: #F0F1F2;
+$grey: #E1E3E5;
+$darkGrey: rgba(55, 63, 81, 1);
+$lightBlue: rgba(44, 140, 153, 1);
+$blue: rgba(4, 75, 127, 1);
+
+html {
+  font-size: 62.5%;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+body {
+  font-size: 16px; /* px fallback */
+  font-size: 1.6rem; /* default font-size for document */
+  line-height: 1.5; /* a nice line-height */
+}

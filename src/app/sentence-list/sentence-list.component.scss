@@ -1,0 +1,18 @@
+@import "../../styles.scss";
+
+:host {
+    display: block;
+
+    app-sentence {
+        background-color: $lightGrey;
+        padding: .5rem;
+
+        &:nth-child(odd) {
+            background-color: $grey;
+        }
+
+        &:hover {
+            color: $lightBlue;
+        }
+    }
+}
