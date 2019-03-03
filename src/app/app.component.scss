@@ -1,0 +1,13 @@
+#content {
+    display: flex;
+    flex-wrap: wrap;
+
+    app-sentence-list {
+        margin-top: 3rem;
+        flex: 1 1 auto;
+    }
+
+    #edit {
+        margin-top: 3rem;
+    }
+}

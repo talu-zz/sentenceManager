@@ -1,14 +1,20 @@
-<div title="{{ state }}">
-  <app-inline-edit    
-    [value]="data.s"
-    (update)="updateSentence({ s: $event })"
-  ></app-inline-edit>
-  <app-inline-edit    
-    [value]="data.v"
-    (update)="updateSentence({ v: $event })"
-  ></app-inline-edit>
-  <app-inline-edit    
-    [value]="data.o"
-    (update)="updateSentence({ o: $event })"
-  ></app-inline-edit>
+<popper-content #sentenceState>
+  <span [ngClass]="{ missing: !data?.s?.length }">Subject</span>
+  <span [ngClass]="{ missing: !data?.v?.length }">Verb</span>
+  <span [ngClass]="{ missing: !data?.o?.length }">Object</span>
+</popper-content>
+
+<div
+  title="{{ state }}"
+  [popper]="sentenceState"
+  [popperTrigger]="'hover'"
+  [popperStyles]="{
+    'background-color': 'inherit',
+    'color': 'inherit',
+    'border': 'none'
+  }"
+>
+  <span>{{ data.s }}</span>
+  <span>{{ data.v }}</span>
+  <span>{{ data.o }}</span>
 </div>

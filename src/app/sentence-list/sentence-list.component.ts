@@ -1,30 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SentencesService } from '../sentences.service';
 import { sentence } from '../sentenceManager.types';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sentence-list',
   templateUrl: './sentence-list.component.html',
   styleUrls: ['./sentence-list.component.scss']
 })
-export class SentenceListComponent implements OnInit {
-  savedSentences: sentence[];
+export class SentenceListComponent implements OnInit, OnDestroy {
+  sentences$: Observable<sentence[]>;
+  routeParams$: any;
 
-  constructor(private sentences: SentencesService) {}
+  constructor(
+    private sentences: SentencesService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.getSavedSentences();
+    this.loadData();
+    this.routeParams$ = this.route.queryParamMap
+    .subscribe(params => {
+    if(params.has('saved')){
+      this.loadData();
+    }
+
+      
+    });
   }
 
-  private getSavedSentences() {
-    this.sentences
-      .getAll()
-      .subscribe(sentences => (this.savedSentences = sentences));
+  loadData(): any {    
+    this.sentences$ = this.sentences.getAll();
   }
 
-  save(updatedData: sentence) {
-    this.sentences
-      .update(updatedData)
-      .subscribe(() => this.getSavedSentences());
-  }
+  ngOnDestroy(): void {}
 }

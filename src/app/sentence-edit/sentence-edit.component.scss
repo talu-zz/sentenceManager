@@ -1,0 +1,45 @@
+@import "../../styles.scss";
+
+:host {
+    display: block;
+    padding: 1rem 2rem;
+    border: 1px solid $lightBlue;
+    border-radius: 2px;
+    margin: 0 1rem;
+    background-color: $lightBlue;
+    position: relative;
+    min-height: 22rem;
+
+    label {
+        display: block;
+        padding: .2rem;
+
+        span {
+            display: inline-block;
+            font-weight: 600;
+            color: white;
+            min-width: 8rem;
+        }
+
+        input {
+            font: inherit;
+            border-radius: 2px;
+            border: none;
+            padding: 0.3rem;
+        }
+    }
+
+    button {
+        background-color: white;
+        border: none;
+        border-radius: 2px;
+        font: inherit;
+        margin-right: 1rem;
+    }
+
+    .actions {
+        position: absolute;
+        right: 1.2rem;
+        bottom: 2.2rem;
+    }    
+}

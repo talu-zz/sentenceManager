@@ -1,0 +1,21 @@
+<form [formGroup]="sentenceForm" (ngSubmit)="updateSentence()">
+  <label for="sentence_subject">
+    <span>Subject</span>
+    <input type="text" id="sentence_subject" formControlName="subject" />
+  </label>
+
+  <label for="sentence_verb">
+    <span>Verb</span>
+    <input type="text" id="sentence_verb" formControlName="verb" />
+  </label>
+
+  <label for="sentence_object">
+    <span>Object</span>
+    <input type="text" id="sentence_object" formControlName="object" />
+  </label>
+
+  <div class="actions">
+    <button type="submit">Save</button>
+    <button type="button" (click)="discardChanges()">Discard</button>
+  </div>
+</form>

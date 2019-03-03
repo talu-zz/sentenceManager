@@ -3,16 +3,27 @@
 :host {
     display: block;
 
-    app-sentence {
+    a {
+        display: block;
         background-color: $lightGrey;
         padding: .5rem;
+        text-decoration: none;
 
         &:nth-child(odd) {
             background-color: $grey;
         }
 
+        &:visited {
+            color: black;
+        }
+
         &:hover {
             color: $lightBlue;
+        }
+
+        &.active {
+            background-color: $lightBlue;
+            color: #fff;
         }
     }
 }

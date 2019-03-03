@@ -36,15 +36,23 @@ export class SentencesService {
     }
   ];
 
-  update(updatedSentence: sentence): Observable<boolean> {
-    this.data = this.data.map(s =>
-      s.n == updatedSentence.n ? updatedSentence : s
-    );
-    return of(true);
-  }
   constructor() {}
+
+  get(id: number): Observable<sentence> {
+    return of(this.data.filter(d => d.n == id)[0]);
+  }
 
   getAll(): Observable<sentence[]> {
     return of(this.data);
+  }
+
+  update(updatedSentence: sentence): Observable<boolean> {
+		console.log('TCL: SentencesService -> constructor -> sentence', updatedSentence)
+    this.data = this.data.map(s =>
+      s.n == updatedSentence.n ? updatedSentence : s
+    );
+    
+		console.log('TCL: SentencesService -> constructor -> this.data', this.data)
+    return of(true);
   }
 }

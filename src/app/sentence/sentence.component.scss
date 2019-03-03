@@ -1,9 +1,18 @@
+@import "../../styles.scss";
+
 :host {
+    background-color: inherit;
     display: block;
 
-    > div {
-        app-inline-edit {
-            margin: 0 0.5rem;
+    span {
+        padding-left: .5rem;
+    }
+
+    popper-content {
+        background-color: inherit;
+
+        span.missing {
+            color: $red;
         }
     }
 }
