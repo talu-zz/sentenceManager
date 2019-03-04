@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { SentencesService } from '../sentences.service';
 import { switchMap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
+
+import { SentenceSelectors } from '../selectors';
+import { SentenceActions } from '../actions';
 
 @Component({
   templateUrl: './sentence-edit.component.html',
@@ -17,7 +21,7 @@ export class SentenceEditComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private sentences: SentencesService
+    private store: Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -29,7 +33,9 @@ export class SentenceEditComponent implements OnInit, OnDestroy {
 
     this.routeParams$ = this.route.paramMap
       .pipe(
-        switchMap((params: Params) => this.sentences.get(+params.get('id')))
+        switchMap((params: Params) =>
+          this.store.select(SentenceSelectors.getById(+params.get('id')))
+        )
       )
       .subscribe(sentence => {
         this.id = sentence.n;
@@ -42,20 +48,19 @@ export class SentenceEditComponent implements OnInit, OnDestroy {
   }
 
   updateSentence() {
-    this.sentences
-      .update({
+    this.store.dispatch(
+      new SentenceActions.UpdateSentence({
         n: this.id,
         s: this.sentenceForm.value.subject,
         v: this.sentenceForm.value.verb,
         o: this.sentenceForm.value.object
       })
-      .subscribe(() =>
-        this.router.navigate(['/'], { queryParams: { saved: this.id } })
-      );
+    );
+    this.router.navigate(['/']);
   }
 
   discardChanges() {
-    this.router.navigate(['/'], { queryParams: { discard: this.id } });
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy(): void {

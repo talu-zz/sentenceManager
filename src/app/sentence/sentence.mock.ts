@@ -1,11 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { sentence } from '../sentenceManager.types';
+import { Component, Input } from '@angular/core';
+import { Sentence } from '../models/sentence.model';
 
 @Component({
   selector: 'app-sentence',
   template: ''
 })
 export class MockSentenceComponent {
-  @Input() data: sentence;
-  @Output() changed: EventEmitter<sentence> = new EventEmitter<sentence>();
+  @Input() data: Sentence;
 }

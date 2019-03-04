@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { sentence } from '../sentenceManager.types';
+import { Sentence } from '../models/sentence.model';
 
 @Component({
   selector: 'app-sentence',
@@ -7,7 +7,7 @@ import { sentence } from '../sentenceManager.types';
   styleUrls: ['./sentence.component.scss']
 })
 export class SentenceComponent implements OnInit {
-  @Input() data: sentence;
+  @Input() data: Sentence;
   state: string;
 
   constructor() {}

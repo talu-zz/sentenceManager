@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { SentenceListComponent } from './sentence-list/sentence-list.component';
 import { SentenceComponent } from './sentence/sentence.component';
 import { SentenceEditComponent } from './sentence-edit/sentence-edit.component';
+import { StoreModule } from '@ngrx/store';
+import { SentenceReducers } from './reducers';
 
 @NgModule({
   declarations: [
     AppComponent,
     SentenceListComponent,
     SentenceComponent,
-    SentenceEditComponent,
+    SentenceEditComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { SentenceEditComponent } from './sentence-edit/sentence-edit.component';
         component: SentenceEditComponent
       }
     ]),
-    NgxPopperModule
+    NgxPopperModule,
+    StoreModule.forRoot({ sentence: SentenceReducers })
   ],
   providers: [],
   bootstrap: [AppComponent]
