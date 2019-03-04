@@ -16,6 +16,7 @@ export class SentenceComponent implements OnInit {
     this.state = (
       `${(this.data.s && 'Subject ') || ''}` +
       `${(this.data.v && 'Verb ') || ''}` +
-      `${(this.data.o && 'Object') || ''}`).trim();
+      `${(this.data.o && 'Object') || ''}`
+    ).trim();
   }
 }

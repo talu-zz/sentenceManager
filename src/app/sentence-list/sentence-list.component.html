@@ -1,7 +1,14 @@
-<a
-  [routerLink]="[sentence.n, 'edit']"
-  routerLinkActive="active"
-  *ngFor="let sentence of sentences$ | async"
->
-  <app-sentence [data]="sentence"></app-sentence>
-</a>
+<div *ngIf="(sentences$ | async) as sentences; else loading">  
+  <ng-container *ngIf="sentences.length; else noItems">
+    <a
+      [routerLink]="[sentence.n, 'edit']"
+      routerLinkActive="active"
+      *ngFor="let sentence of sentences"
+      [@Highlight]="'updated'"
+    >
+      <app-sentence [data]="sentence"></app-sentence>
+    </a>
+  </ng-container>
+  <ng-template #noItems> There are no sentences for editing yet.</ng-template>
+</div>
+<ng-template #loading>loading sentences...</ng-template>
