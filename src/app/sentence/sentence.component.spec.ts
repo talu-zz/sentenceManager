@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SentenceComponent } from './sentence.component';
-import { sentence } from '../sentenceManager.types';
 import { NgxPopperModule } from 'ngx-popper';
+import { Sentence } from '../models/sentence.model';
 
 describe('SentenceComponent', () => {
   let component: SentenceComponent;
@@ -22,7 +22,7 @@ describe('SentenceComponent', () => {
 
   describe('should create', () => {
     beforeEach(() => {
-      component.data = <sentence>{
+      component.data = <Sentence>{
         n: 1,
         s: 'Anna',
         v: 'is eating',
@@ -46,7 +46,7 @@ describe('SentenceComponent', () => {
 
   describe('Should compose correct state string for sentence with', () => {
     it('subject, verb and object', () => {
-      component.data = <sentence>{
+      component.data = <Sentence>{
         n: 1,
         s: 'Anna',
         v: 'is eating',
@@ -58,7 +58,7 @@ describe('SentenceComponent', () => {
     });
 
     it('subject and verb', () => {
-      component.data = <sentence>{
+      component.data = <Sentence>{
         n: 1,
         s: 'Anna',
         v: 'is eating',
@@ -70,7 +70,7 @@ describe('SentenceComponent', () => {
     });
 
     it('subject and object', () => {
-      component.data = <sentence>{
+      component.data = <Sentence>{
         n: 1,
         s: 'Anna',
         v: undefined,
@@ -82,7 +82,7 @@ describe('SentenceComponent', () => {
     });
 
     it('verb', () => {
-      component.data = <sentence>{
+      component.data = <Sentence>{
         n: 1,
         s: '',
         v: 'is eating',

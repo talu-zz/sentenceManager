@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { Sentence } from '../models/sentence.model';
 import { SentenceSelectors } from '../selectors';
-import { tap } from 'rxjs/operators';
 import {
   trigger,
   state,
@@ -26,11 +25,7 @@ import {
 })
 export class SentenceListComponent implements OnInit {
   sentences$: Observable<Sentence[]>;
-  intialLoad: boolean;
-
-  constructor(private store: Store<AppState>) {
-    this.intialLoad = true;
-  }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.loadData();
